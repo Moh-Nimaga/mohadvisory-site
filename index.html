@@ -60,6 +60,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 .fl textarea{resize:vertical}
 .fbtn{min-height:52px;padding:0 28px;border:0;background:var(--ac-ink);color:#151513;font:500 19px Jost,sans-serif;cursor:pointer}
 .fbtn[disabled]{opacity:.6;cursor:default}
+.aw li::before{content:"●";color:var(--ac2);margin-right:10px;font-size:.7em;vertical-align:.15em}
 .chip{min-height:44px;padding:0 18px;border:1px solid #151513;background:transparent;color:#151513;font-family:Jost,sans-serif;font-size:17px;cursor:pointer}
 .chip:hover,.chip.on{background:#151513;color:#ebe7df}
 .af-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;width:100%;margin:0 0 20px;padding:24px;box-sizing:border-box;break-inside:avoid;border:0;font-family:Jost,sans-serif;font-weight:300;font-size:18px;line-height:1.4;text-align:left;cursor:pointer}
@@ -126,7 +127,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 </section>
 
 <section aria-label="Clients" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 26px 5%; border-top: 1px solid #151513; border-bottom: 1px solid #151513; font-family: Archivo, sans-serif; font-weight: 800; font-size: 24px; letter-spacing: -0.02em; text-transform: lowercase">
-<span>lvmh</span><span style="color: var(--ac2)">●</span><span>nike</span><span style="color: var(--ac2)">●</span><span>alshaya</span><span style="color: var(--ac2)">●</span><span>coty</span><span style="color: var(--ac2)">●</span><span>guerlain</span><span style="color: var(--ac2)">●</span><span>camper</span><span style="color: var(--ac2)">●</span><span>ray-ban</span><span style="color: var(--ac2)">●</span><span>arkema</span><span style="color: var(--ac2)">●</span><span>adidas</span><span style="color: var(--ac2)">●</span><span>printemps</span><span style="color: var(--ac2)">●</span><span>kpmg</span><span style="color: var(--ac2)">●</span><span>google</span><span style="color: var(--ac2)">●</span><span>martell</span><span style="color: var(--ac2)">●</span><span>sansui niseko</span>
+<span>lvmh</span><span style="color: var(--ac2)">●</span><span>nike</span><span style="color: var(--ac2)">●</span><span>alshaya</span><span style="color: var(--ac2)">●</span><span>coty</span><span style="color: var(--ac2)">●</span><span>guerlain</span><span style="color: var(--ac2)">●</span><span>camper</span><span style="color: var(--ac2)">●</span><span>ray-ban</span><span style="color: var(--ac2)">●</span><span>arkema</span><span style="color: var(--ac2)">●</span><span>adidas</span><span style="color: var(--ac2)">●</span><span>printemps</span><span style="color: var(--ac2)">●</span><span>kpmg</span><span style="color: var(--ac2)">●</span><span>google</span><span style="color: var(--ac2)">●</span><span>martell</span><span style="color: var(--ac2)">●</span><span>prada beauty</span><span style="color: var(--ac2)">●</span><span>klépierre</span><span style="color: var(--ac2)">●</span><span>fdj</span><span style="color: var(--ac2)">●</span><span>anjac</span><span style="color: var(--ac2)">●</span><span>sansui niseko</span>
 </section>
 
 <section id="for" style="background: #151513; color: #ebe7df; padding: 112px 5% 104px">
@@ -178,8 +179,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 
 <section aria-label="Awards" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 40px; padding: 32px 5%; border-top: 1px solid #151513; background: #f6f3ec">
 <p style="margin: 0; font-weight: 400; font-size: 20px; color: #3b3934">awards</p>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 28px; font-family: Archivo, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em">
-<li>3× LE BOOK, Non-Traditional Experience</li><li aria-hidden="true" style="color: var(--ac2)">●</li><li>2× TOP/COM Gold</li><li aria-hidden="true" style="color: var(--ac2)">●</li><li>Grand Prix Stratégies Luxe, Gold</li><li aria-hidden="true" style="color: var(--ac2)">●</li><li>FWA of the Day</li>
+<ul class="aw" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 32px; font-family: Archivo, sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em">
+<li>Grand Prix Stratégies du Luxe — Grand Prix, Gold</li><li>European Design Awards — Silver, Bronze</li><li>Grand Prix Stratégies Digitales — Silver</li><li>TOP/COM — Grand Prix Or</li><li>La Nuit des Rois — Gold</li><li>LE BOOK Connections — 3 wins</li><li>FWA of the Day</li>
 </ul>
 </section>
 
@@ -230,6 +231,13 @@ var all = [
 { name: 'Nike', ar: '3 / 4', kind: 'activation · sportswear', what: 'Interactive installation for Air Max Day, delivered in two weeks.', role: 'Project Director', scope: 'brief framing, UX, real-time 3D and web app, deployment', tags: ['experience'], c: D },
 { name: 'adidas', ar: '1 / 1', kind: 'activation · sportswear', what: 'Real-time interactive 3D experience taking visitors into the Grid for the European launch of Deerupt, in Paris, London, Manchester and Amsterdam.', role: 'Project Director', scope: 'production direction, four-city deployment', tags: ['experience'], c: W },
 { name: 'Martell', ar: '4 / 3', kind: 'platform · spirits', what: 'UX, SEO and conversion optimisation across the French and international sites.', role: 'Executive Project Director', scope: 'UX, SEO, CRO, multi-market rollout', tags: ['product'], c: G },
+{ name: 'Printemps', ar: '4 / 5', kind: 'AI activation · department store', what: 'Modology AI photocall: a gesture-controlled installation in the Haussmann store window that gave each passer-by a fashion identity on a five-metre LED screen, for one month.', role: 'Project Director', scope: 'production direction, AI content workflow, in-window deployment', tags: ['ai', 'experience'], c: W },
+{ name: 'Guerlain VR', ar: '4 / 3', kind: 'VR experience · luxury', what: 'Olfactive Landscapes: a virtual-reality journey through three AI-generated worlds with synchronised scent diffusion, launched at VivaTech and run for a year in flagship boutiques.', role: 'Project Director', scope: 'production direction, generative AI pipeline, headset and scent hardware, boutique rollout', tags: ['ai', 'experience'], c: D },
+{ name: 'KPMG', ar: '1 / 1', kind: 'AI experience · professional services', what: 'Collaborative AI artwork at VivaTech: each visitor\'s vision of the future became an image in one large collective piece, with Artpoint.', role: 'Project Director', scope: 'production direction, AI image generation, event deployment', tags: ['ai', 'experience'], c: G },
+{ name: 'Anjac', ar: '4 / 5', kind: 'showroom · health & beauty', what: 'Infinity room for the headquarters showroom: an EEG headset reads the visitor\'s emotions and drives generative landscapes in real time.', role: 'Project Director', scope: 'UX, AI and generative content supervision, specifications, testing, on-site deployment', tags: ['experience', 'ai'], c: R },
+{ name: 'FDJ', ar: '4 / 3', kind: 'live 3D · gaming', what: 'Live 3D draw animation for EuroDreams, deployed across eight countries.', role: 'Project Director', scope: 'production direction, real-time 3D, multi-country deployment', tags: ['experience', 'product'], c: W },
+{ name: 'Klépierre', ar: '1 / 1', kind: 'retail · data-driven signage', what: 'Two data-driven generative digital sculptures, self-generated in real time, in the Marseille Bourse and Belle-Épine shopping centres.', role: 'Project Director', scope: 'production direction, generative design, in-mall installation', tags: ['experience'], c: D },
+{ name: 'Prada Beauty', ar: '3 / 4', kind: 'connected service · beauty', what: 'Service design for an IoT companion app, with its UX and UI strategy.', role: 'Executive Project Director', scope: 'service design, UX and UI strategy', tags: ['product'], c: G },
 { name: 'Sansui Niseko', ar: '4 / 5', kind: 'platform · hospitality · Japan', what: 'Full redesign of the hotel\'s digital ecosystem, in Japanese, English and Chinese, with booking system integration.', role: 'Strategic Project Director', scope: 'UX, content strategy, booking integration, on-site SEO', tags: ['product'], c: R }
 ];
 var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
@@ -261,7 +269,7 @@ function draw() {
   chipsEl.innerHTML = CH.map(function (c) { return '<button type="button" class="chip' + (c[0] === filter ? ' on' : '') + '" aria-pressed="' + (c[0] === filter) + '" data-f="' + c[0] + '">' + esc(c[1]) + '</button>'; }).join('');
   refsEl.innerHTML = all.filter(function (r) { return filter === 'all' || r.tags.indexOf(filter) !== -1; }).map(function (r) {
     var o = r.name === openName, nm = esc(r.name);
-    var head = '<button type="button" class="af-tile" aria-expanded="' + o + '" data-n="' + nm + '" style="aspect-ratio: ' + r.ar + '; background: ' + r.c.tone + '; color: ' + r.c.ink + '">';
+    var head = '<button type="button" class="af-tile" aria-expanded="' + o + '" data-n="' + nm + '" style="' + (o ? 'min-height: 340px; gap: 28px' : 'aspect-ratio: ' + r.ar) + '; background: ' + r.c.tone + '; color: ' + r.c.ink + '">';
     if (!o) { return head + '<span class="t-top"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm">+</span></span><span class="t-name">' + nm + '</span></button>'; }
     return head + '<span style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #151513"></span><span class="t-top" style="color: #bdb8ad"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm" style="color: #ebe7df">–</span></span><span style="position: relative; display: block; color: #ebe7df"><span style="display: block; margin-bottom: 16px; font-weight: 400; font-size: 22px; line-height: 1.2">' + esc(r.what) + '</span><span class="t-row">role — ' + esc(r.role) + '</span><span class="t-row" style="padding-bottom: 0">scope — ' + esc(r.scope) + '</span></span><span class="t-name" style="font-size: 28px; color: #ebe7df">' + nm + '<span style="color: var(--ac-d)">.</span></span></button>';
   }).join('');
@@ -271,7 +279,7 @@ document.getElementById('work').addEventListener('click', function (e) {
   var t = e.target.closest('[data-n]'); if (t) { var n = t.getAttribute('data-n').replace(/&amp;/g, '&'); openName = openName === n ? '' : n; draw(); var el = refsEl.querySelector('[aria-expanded="true"]'); if (el) { el.focus(); } }
 });
 draw();
-var FORM_KEY = '';
+var FORM_KEY = '3cbafdc3-8b6e-4e1c-a634-a9fa65f767b3';
 (function () {
   var f = document.getElementById('cform'), msg = document.getElementById('cmsg');
   if (!FORM_KEY) { return; }
