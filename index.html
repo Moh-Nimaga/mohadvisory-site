@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOH Advisory — Digital product &amp; experience advisory</title>
+<meta name="description" content="MOH Advisory frames, shapes and leads digital products, platforms and brand experiences for international groups. Strategy, experience, feasibility. One head.">
+<meta property="og:title" content="MOH Advisory — Digital product &amp; experience advisory">
+<meta property="og:description" content="Bring the ambition. We take it to launch.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohadvisory.com/">
+<meta name="theme-color" content="#51458e">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+body{margin:0;background:#ebe7df}
+:root{--ac:#51458e;--ac2:#7535fb;--ac-d:#a680ff;--ac-t:#51458e;--ac-bg:#51458e;--ac-ink:#f6f3ec;--ac-deco:#ebe7df;--lg:#7535fb;--lg-d:#a680ff}
+a{color:#151513}a:hover{color:var(--ac-t)}
+.af-dots{background-image:radial-gradient(#ebe7df 3px,transparent 3.5px);background-size:22px 22px}
+.af-chip:hover{background:#151513;color:#ebe7df}
+.af-tile{transition:transform .2s ease}.af-tile:hover{transform:translateY(-6px)}
+.arrow{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #151513;border-radius:50%;background:transparent;color:#151513;cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.arrow:hover{background:#151513;color:#ebe7df}
+.node{display:block;width:56px;height:56px;background:#c9c4b9;transform:scale(.22);transition:background-color .4s ease .25s}
+.node.c0{border-radius:50%}.node.c2{clip-path:polygon(50% 0,100% 100%,0 100%)}
+.node.c0.hit,.node.c2.hit{background:var(--ac)}.node.c1.hit{background:#151513}
+.v-step{color:#6b6861;transition:color .4s ease,transform .5s cubic-bezier(.2,.7,.1,1)}
+.v-step:hover{color:#151513}
+.v-step.on{color:#151513;transform:translateX(-8px)}
+.v-fill{transition:height .7s cubic-bezier(.7,0,.2,1)}
+.v-mwrap{transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.v-morph{width:72px;height:72px;background:var(--ac);border-radius:50%;clip-path:polygon(0 0,100% 0,100% 100%,0 100%);transition:border-radius .6s ease,clip-path .6s ease,background-color .6s ease,transform .8s cubic-bezier(.7,0,.2,1)}
+.v-morph.s1{border-radius:0;background:#151513;transform:rotate(180deg)}
+.v-morph.s2{border-radius:0;transform:rotate(360deg);clip-path:polygon(50% 0,50% 0,100% 100%,0 100%)}
+.v-stage{position:relative;display:grid;overflow:hidden;min-height:570px}
+.v-panel{opacity:0;filter:blur(14px);transform:scale(.97);visibility:hidden;transition:opacity .35s ease,filter .35s ease,transform .5s ease,visibility 0s linear .5s}
+.v-panel.on{opacity:1;filter:none;transform:none;visibility:visible;transition:opacity .5s ease .35s,filter .5s ease .35s,transform .6s ease .35s,visibility 0s}
+@media (prefers-reduced-motion:reduce){.svc *{transition-duration:.01s!important;transition-delay:0s!important}}
+
+@font-face{font-family:Archivo;font-weight:600;font-display:swap;src:url(fonts/archivo-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Archivo;font-weight:800;font-display:swap;src:url(fonts/archivo-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:Jost;font-weight:300;font-display:swap;src:url(fonts/jost-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:Jost;font-weight:400;font-display:swap;src:url(fonts/jost-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Jost;font-weight:500;font-display:swap;src:url(fonts/jost-latin-500-normal.woff2) format("woff2")}
+html{scroll-behavior:smooth}
+.page{font-family:Jost,system-ui,sans-serif;font-weight:300;color:#151513;background:#ebe7df;font-size:18px;line-height:1.45;overflow-x:hidden}
+button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset:3px}
+.svc-grid{display:grid;grid-template-columns:minmax(0,.85fr) 72px minmax(0,1.7fr)}
+.v-stage{padding-left:20px}
+.v-step{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-end;width:100%;height:190px;box-sizing:border-box;padding:0 20px 0 0;border:0;background:transparent;text-align:right;cursor:pointer;font-family:Jost,sans-serif}
+.st-n{display:block;font-weight:400;font-size:18px;color:var(--ac-t)}
+.st-l{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(28px,6vw,92px);line-height:.9;letter-spacing:-.05em}
+.st-s{display:block;margin-top:12px;font-weight:400;font-size:17px}
+.svc-nextbtn{display:inline-flex;align-items:center;min-height:48px;margin-top:32px;padding:0 22px;border:0;background:#151513;color:#ebe7df;font-family:Jost,sans-serif;font-weight:400;font-size:17px;cursor:pointer}
+.chip{min-height:44px;padding:0 18px;border:1px solid #151513;background:transparent;color:#151513;font-family:Jost,sans-serif;font-size:17px;cursor:pointer}
+.chip:hover,.chip.on{background:#151513;color:#ebe7df}
+.af-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;width:100%;margin:0 0 20px;padding:24px;box-sizing:border-box;break-inside:avoid;border:0;font-family:Jost,sans-serif;font-weight:300;font-size:18px;line-height:1.4;text-align:left;cursor:pointer}
+.t-top{position:relative;display:flex;justify-content:space-between;gap:12px;font-weight:400;font-size:16px}
+.t-pm{font-size:26px;line-height:.8}
+.t-name{position:relative;display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(34px,3.6vw,52px);line-height:.9;letter-spacing:-.045em;text-transform:lowercase}
+.t-row{display:block;padding:8px 0;border-top:1px solid #5c5952;font-size:16px;color:#dcd7cc}
+@media (max-width:860px){
+.svc-grid{grid-template-columns:1fr}
+.svc-line{display:none}
+.svc-steps{display:flex;gap:8px;margin-bottom:40px;border-bottom:1px solid #151513}
+.v-step{height:auto;align-items:flex-start;text-align:left;padding:0 0 16px}
+.v-step.on{transform:none;box-shadow:inset 0 -4px 0 var(--ac)}
+.st-s{display:none}
+.v-stage{padding-left:0;min-height:0}
+.ct-circle{position:static!important;margin:0 0 48px}
+.hero-disc{left:auto!important;right:-90px;top:-70px!important;width:240px!important;height:240px!important}
+#top>div:nth-child(2){min-height:0!important;border-right:0!important}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+</style>
+</head>
+<body>
+<main class="page">
+<section id="top" style="position: relative; overflow: hidden; display: flex; flex-wrap: wrap">
+<div aria-hidden="true" class="hero-disc" style="position: absolute; left: calc(58% - 210px); top: 400px; width: 420px; height: 420px; border-radius: 50%; background: var(--ac)"></div>
+<div style="position: relative; flex: 1.38 1 480px; min-width: 0; box-sizing: border-box; padding: 40px 5% 56px; border-right: 1px solid #151513; display: flex; flex-direction: column; gap: 56px; min-height: 900px">
+<a href="#top" aria-label="MOH Advisory, home" style="display: inline-flex; flex-direction: column; align-items: center; gap: 8px; align-self: flex-start; text-decoration: none">
+<svg role="img" aria-label="moh" viewBox="0 0 198.5 100" width="79" height="40" style="display: block"><path fill="currentColor" d="M0 40H13V100H0V40zM15.5 40H15.5a25 25 0 0 1 25 25V100H15.5V40zM43 40H43a25 25 0 0 1 25 25V100H43V40zM153 0H166V100H142V11a11 11 0 0 1 11 -11zM168.5 40H168.5a30 30 0 0 1 30 30V100H168.5V40z"></path><circle fill="var(--lg)" cx="105" cy="70" r="30"></circle></svg>
+<span aria-label="advisory" style="display: flex; box-sizing: border-box; width: 91%; font-weight: 400; font-size: 15px; line-height: 1.1; justify-content: space-between"><span aria-hidden="true">a</span><span aria-hidden="true">d</span><span aria-hidden="true">v</span><span aria-hidden="true">i</span><span aria-hidden="true">s</span><span aria-hidden="true">o</span><span aria-hidden="true">r</span><span aria-hidden="true">y</span></span>
+</a>
+<h1 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(60px, 10vw, 148px); line-height: 0.84; letter-spacing: -0.05em; text-transform: lowercase">bring the ambition<span style="color: var(--ac2)">.</span></h1>
+<p style="margin: 0; max-width: 240px; font-weight: 500; font-size: 30px; line-height: 1.08">we take it<br>to launch<span style="color: var(--ac2)">.</span></p>
+<nav style="margin-top: auto; display: flex; flex-direction: column; font-weight: 400; font-size: 19px">
+<a href="#for" style="text-decoration: none; padding: 10px 0">who it is for</a>
+<a href="#services" style="text-decoration: none; padding: 10px 0">frame, shape, lead</a>
+<a href="#work" style="text-decoration: none; padding: 10px 0">selected work</a>
+<a href="#contact" style="padding: 10px 0">contact</a>
+</nav>
+</div>
+<div style="position: relative; flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; padding: 40px 8% 48px">
+<div style="max-width: 250px">
+<p style="margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid #151513; font-size: 16px">digital product &amp; experience advisory</p>
+<p style="margin: 0; font-weight: 400; font-size: 21px; line-height: 1.25">products, platforms and brand experiences for international groups</p>
+<p style="margin: 14px 0 0; font-weight: 400; font-size: 21px; color: var(--ac-t)">strategy, experience, feasibility. one head.</p>
+</div>
+<div style="font-family: Archivo, sans-serif; font-weight: 600; font-size: 44px; line-height: 1.05; text-align: center">
+<span style="display: block">14+</span>
+<span aria-hidden="true" style="display: block; width: 36px; height: 2px; background: #151513; margin: 12px auto"></span>
+<span style="display: block; font-family: Jost, sans-serif; font-weight: 400; font-size: 18px">years</span>
+</div>
+</div>
+<div>
+<div aria-hidden="true" style="height: 300px; background: #c9c4b9; display: flex; align-items: flex-end; justify-content: flex-end; padding: 24px 8%; box-sizing: border-box"><div class="af-dots" style="width: 110px; height: 66px"></div></div>
+<div style="background: #151513; color: #ebe7df; padding: 40px 8% 44px">
+<p style="margin: 0 0 14px; font-size: 16px; color: #bdb8ad">current engagement — in build, 2026</p>
+<p style="margin: 0 0 28px; font-weight: 400; font-size: 25px; line-height: 1.2">AI-powered promotion optimisation platform for Alshaya Group's merchandising teams, with Squared X.</p>
+<div aria-hidden="true" class="af-dots" style="width: 110px; height: 66px; margin-left: auto"></div>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Clients" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; padding: 26px 5%; border-top: 1px solid #151513; border-bottom: 1px solid #151513; font-family: Archivo, sans-serif; font-weight: 800; font-size: 24px; letter-spacing: -0.02em; text-transform: lowercase">
+<span>lvmh</span><span style="color: var(--ac2)">●</span><span>nike</span><span style="color: var(--ac2)">●</span><span>alshaya</span><span style="color: var(--ac2)">●</span><span>coty</span><span style="color: var(--ac2)">●</span><span>guerlain</span><span style="color: var(--ac2)">●</span><span>camper</span><span style="color: var(--ac2)">●</span><span>ray-ban</span><span style="color: var(--ac2)">●</span><span>arkema</span><span style="color: var(--ac2)">●</span><span>adidas</span><span style="color: var(--ac2)">●</span><span>printemps</span><span style="color: var(--ac2)">●</span><span>kpmg</span><span style="color: var(--ac2)">●</span><span>google</span><span style="color: var(--ac2)">●</span><span>martell</span><span style="color: var(--ac2)">●</span><span>sansui niseko</span>
+</section>
+
+<section id="for" style="background: #151513; color: #ebe7df; padding: 112px 5% 104px">
+<p style="margin: 0 0 56px; font-weight: 400; font-size: 20px; color: #bdb8ad">who it is for</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 48px; padding: 32px 0; border-top: 1px solid #5c5952"><h2 style="flex: 1.3 1 380px; margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.9; letter-spacing: -0.045em">brands<span style="color: var(--ac-d)">.</span></h2><p style="flex: 1 1 340px; margin: 0; max-width: 480px; color: #dcd7cc">A business or digital leader with a mandate and a budget, who needs a senior person to turn both into something their teams can ship.</p></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 48px; padding: 32px 0; border-top: 1px solid #5c5952"><h2 style="flex: 1.3 1 380px; margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.9; letter-spacing: -0.045em">consultancies<span style="color: var(--ac-d)">.</span></h2><p style="flex: 1 1 340px; margin: 0; max-width: 480px; color: #dcd7cc">Tech and data firms that need a product and experience lead in front of a strategic client.</p></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 48px; padding: 32px 0; border-top: 1px solid #5c5952; border-bottom: 1px solid #5c5952"><h2 style="flex: 1.3 1 380px; margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 6.6vw, 96px); line-height: 0.9; letter-spacing: -0.045em">studios<span style="color: var(--ac-d)">.</span></h2><p style="flex: 1 1 340px; margin: 0; max-width: 480px; color: #dcd7cc">Creative teams taking on a project larger or more technical than usual, who want it directed and delivered.</p></div>
+</section>
+
+<section id="services" class="svc" style="background: #f6f3ec; padding: 112px 5% 112px; border-bottom: 1px solid #151513">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 88px">
+<h2 style="margin: 0; max-width: 820px; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(44px, 6.4vw, 92px); line-height: 0.88; letter-spacing: -0.045em">one line, three moments where it usually breaks<span style="color: var(--ac2)">.</span></h2>
+<div style="display: flex; align-items: center; gap: 12px">
+<button type="button" class="arrow" aria-label="Previous step" id="svc-prev"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg></button>
+<button type="button" class="arrow" aria-label="Next step" id="svc-next" style="background: var(--ac-bg); border-color: var(--ac-bg); color: var(--ac-ink)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="M5 12l7 7 7-7"></path></svg></button>
+</div>
+</div>
+<div class="svc-grid">
+<div class="svc-steps" id="svc-steps"></div>
+<div class="svc-line" aria-hidden="true" style="position: relative; height: 570px">
+<div style="position: absolute; left: calc(50% - 1px); top: 28px; width: 2px; height: 380px; background: #c9c4b9"></div>
+<div class="v-fill" id="svc-fill" style="position: absolute; left: calc(50% - 1px); top: 28px; width: 2px; height: 0; background: var(--ac)"></div>
+<span class="node c0" style="position: absolute; left: 50%; margin-left: -28px; top: 0"></span>
+<span class="node c1" style="position: absolute; left: 50%; margin-left: -28px; top: 190px"></span>
+<span class="node c2" style="position: absolute; left: 50%; margin-left: -28px; top: 380px"></span>
+<div class="v-mwrap" id="svc-mark" style="position: absolute; left: 50%; margin-left: -36px; top: -8px"><div class="v-morph" id="svc-morph"></div></div>
+</div>
+<div class="v-stage" id="svc-stage" aria-live="polite"></div>
+</div>
+</section>
+
+<section style="padding: 112px 5% 120px">
+<p style="margin: 0 0 40px; font-weight: 400; font-size: 20px; color: #3b3934">what we take on</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0">
+<div style="background: #151513; color: #ebe7df; padding: 32px 28px 36px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 32px"><p style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: 104px; line-height: 0.8; letter-spacing: -0.05em; color: var(--ac-d)">1</p><div><h3 style="margin: 0 0 8px; font-family: Archivo, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.01em">digital products &amp; internal tools</h3><p style="margin: 0; color: #dcd7cc">Decision tools, data products, apps and services.</p></div></div>
+<div style="background: #f6f3ec; padding: 32px 28px 36px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 32px"><p style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: 104px; line-height: 0.8; letter-spacing: -0.05em">2</p><div><h3 style="margin: 0 0 8px; font-family: Archivo, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.01em">platforms &amp; e-commerce</h3><p style="margin: 0; color: #3b3934">Corporate and brand sites, booking, conversion.</p></div></div>
+<div style="background: var(--ac-bg); color: var(--ac-ink); padding: 32px 28px 36px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 32px"><p style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: 104px; line-height: 0.8; letter-spacing: -0.05em">3</p><div><h3 style="margin: 0 0 8px; font-family: Archivo, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.01em">brand &amp; retail experiences</h3><p style="margin: 0; font-weight: 400">Interactive, immersive and connected, in store and on site.</p></div></div>
+<div style="background: #c9c4b9; padding: 32px 28px 36px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 32px"><p style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: 104px; line-height: 0.8; letter-spacing: -0.05em">4</p><div><h3 style="margin: 0 0 8px; font-family: Archivo, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -0.01em">AI in content &amp; operations</h3><p style="margin: 0; color: #2b2a26">Bespoke models, generative content, AI-assisted tools.</p></div></div>
+</div>
+</section>
+
+<section id="work" style="padding: 0 5% 120px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px; padding-top: 72px; border-top: 1px solid #151513; margin-bottom: 48px">
+<h2 style="margin: 0; max-width: 760px; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 5.6vw, 80px); line-height: 0.88; letter-spacing: -0.045em">luxury, retail, sportswear, industry<span style="color: var(--ac2)">.</span></h2>
+<div id="chips" style="display: flex; flex-wrap: wrap; gap: 8px"></div>
+</div>
+<div id="refs" style="columns: 340px; column-gap: 20px"></div>
+</section>
+
+<section id="contact" style="position: relative; overflow: hidden; background: var(--ac-bg); color: var(--ac-ink); padding: 112px 5% 48px">
+<div class="ct-circle" style="position: absolute; right: 6%; top: 64px; width: 240px; height: 240px; border-radius: 50%; background: var(--ac-deco); color: #151513; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px">
+<div style="display: inline-flex; flex-direction: column; align-items: center; gap: 8px">
+<svg role="img" aria-label="moh" viewBox="0 0 198.5 100" width="115" height="58" style="display: block"><path fill="currentColor" d="M0 40H13V100H0V40zM15.5 40H15.5a25 25 0 0 1 25 25V100H15.5V40zM43 40H43a25 25 0 0 1 25 25V100H43V40zM153 0H166V100H142V11a11 11 0 0 1 11 -11zM168.5 40H168.5a30 30 0 0 1 30 30V100H168.5V40z"></path><circle fill="var(--lg)" cx="105" cy="70" r="30"></circle></svg>
+<span aria-label="advisory" style="display: flex; box-sizing: border-box; width: 91%; font-weight: 400; font-size: 14px; line-height: 1.1; justify-content: space-between"><span aria-hidden="true">a</span><span aria-hidden="true">d</span><span aria-hidden="true">v</span><span aria-hidden="true">i</span><span aria-hidden="true">s</span><span aria-hidden="true">o</span><span aria-hidden="true">r</span><span aria-hidden="true">y</span></span>
+</div>
+</div>
+<h2 style="position: relative; margin: 0 0 40px; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(60px, 11vw, 160px); line-height: 0.84; letter-spacing: -0.05em">let's build it.</h2>
+<a href="#contact" id="mail" style="position: relative; display: inline-block; padding: 8px 0; font-weight: 500; font-size: clamp(22px, 3.4vw, 28px); color: var(--ac-ink)">write to us →</a>
+<noscript><p style="position: relative; margin: 12px 0 0">contact [at] mohadvisory [dot] com</p></noscript>
+<div style="position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--ac-ink); font-weight: 400; font-size: 17px">
+<span>MOH Advisory LLC · Wyoming, USA</span><span>Europe · the Gulf · Asia</span><a href="https://www.linkedin.com/in/mohamadounimaga/" target="_blank" rel="noopener" style="color: var(--ac-ink); padding: 10px 0">LinkedIn</a>
+</div>
+</section>
+</main>
+<script>
+var S = [
+{ label: 'frame', sub: 'strategy & problem framing', title: '01 — strategy & problem framing', q: 'We know where the business needs to be in three years. What should exist in twelve months to get us there?', text: 'We work back from the ambition: who it serves, what it must prove, what it will cost and what can wait. You leave with a decision and a sequence, not a deck.', items: ['Stakeholder and user research', 'Opportunity and feasibility assessment', 'Vision, roadmap and business case', 'Partner and vendor selection'] },
+{ label: 'shape', sub: 'experience & solution design', title: '02 — experience & solution design', q: 'How do we make something our customers would miss if it disappeared, that still feels like us and that our teams can run?', text: 'Desirable, on brand and operable are three different tests. We design against all three at once, with the people who will build and run it in the room.', items: ['Journeys across digital and physical touchpoints', 'UX architecture and functional specifications', 'UI and creative direction with designers', 'Data, AI and hardware requirements'] },
+{ label: 'lead', sub: 'delivery & programme direction', title: '03 — delivery & programme direction', q: 'Agencies, vendors, internal teams: who keeps one vision intact from the first workshop to the last rollout?', text: 'One accountable lead who speaks strategy to the board, design to the studio and constraints to the builders, and who is still there on launch day.', items: ['Product ownership and backlog', 'Multi-team and multi-vendor coordination', 'Governance up to executive committee', 'Budget, margin and rollout across markets'] }
+];
+var D = { tone: '#2b2a26', ink: '#ebe7df' };
+var G = { tone: '#c9c4b9', ink: '#151513' };
+var R = { tone: 'var(--ac-bg)', ink: 'var(--ac-ink)' };
+var W = { tone: '#f6f3ec', ink: '#151513' };
+var all = [
+{ name: 'Alshaya Group', ar: '4 / 5', kind: 'data product · retail · in build', what: 'AI-powered promotion optimisation platform for merchandising teams across the Gulf.', role: 'Product Owner & Project Director, with Squared X', scope: 'discovery, vision, roadmap, UX and UI, specifications, backlog', tags: ['product', 'ai'], c: D },
+{ name: 'Guerlain', ar: '1 / 1', kind: 'AI content · luxury', what: 'Anniversary film generated by a bespoke AI model trained on the house archives.', role: 'Project Director', scope: 'AI production strategy, dataset curation, five-month production', tags: ['ai', 'experience'], c: G },
+{ name: 'Camper', ar: '4 / 3', kind: 'connected retail', what: 'Three connected objects for the fiftieth anniversary, rolled out to 43 stores worldwide.', role: 'Project Director', scope: 'sourcing, prototyping, series production, software, rollout', tags: ['experience'], c: R },
+{ name: 'Coty', ar: '3 / 4', kind: 'platform · beauty', what: 'Global corporate platform redesign to establish the group online.', role: 'Executive Project Director', scope: 'user journeys, content architecture, specifications, SEO', tags: ['product'], c: W },
+{ name: 'Ray-Ban', ar: '1 / 1', kind: 'AI activation · eyewear', what: 'Real-time AI photocall and virtual try-on for a product launch, in store and at a festival.', role: 'Project Director', scope: 'UX brief, AI engineering specifications, on-site deployment', tags: ['ai', 'experience'], c: D },
+{ name: 'Van Cleef & Arpels', ar: '4 / 5', kind: 'retail experience · jewellery', what: 'Interactive augmented-reality mirrors installed in flagship boutiques in five cities.', role: 'Project Director', scope: 'three AR experiences, international installation and support', tags: ['experience'], c: G },
+{ name: 'Arkema', ar: '4 / 3', kind: 'experience · industry', what: 'Interactive showroom and web experience for the group headquarters.', role: 'Project Director', scope: 'UX strategy, content architecture, 3D and web, on-site deployment', tags: ['experience', 'product'], c: W },
+{ name: 'Cheval Blanc', ar: '1 / 1', kind: 'platform · hospitality', what: 'Conversion strategy and digital brand experience for the LVMH hotel collection.', role: 'Executive Project Director', scope: 'conversion strategy, UX and UI evolutions, maintenance', tags: ['product'], c: R },
+{ name: 'Nike', ar: '3 / 4', kind: 'activation · sportswear', what: 'Interactive installation for Air Max Day, delivered in two weeks.', role: 'Project Director', scope: 'brief framing, UX, real-time 3D and web app, deployment', tags: ['experience'], c: D },
+{ name: 'Printemps', ar: '1 / 1', kind: 'retail experience · department store', what: 'Interactive and immersive customer experience for the department store.', role: 'Manager, CX/UX and projects', scope: 'strategic consulting, experience design, programme delivery', tags: ['experience'], c: W },
+{ name: 'KPMG', ar: '4 / 3', kind: 'experience · professional services', what: 'Interactive, AI-driven experience environment for the firm.', role: 'Manager, CX/UX and projects', scope: 'strategic consulting, experience design, programme delivery', tags: ['experience', 'ai'], c: G },
+{ name: 'Sansui Niseko', ar: '4 / 5', kind: 'platform · hospitality · Japan', what: 'Digital ecosystem and booking module for a new hotel, in Japanese, English and Chinese.', role: 'Senior Consultant, marketing and digital strategy', scope: 'conception, design, production, on-site SEO, content', tags: ['product'], c: R }
+];
+var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+var step = 0;
+var stepsEl = document.getElementById('svc-steps'), stageEl = document.getElementById('svc-stage');
+stepsEl.innerHTML = S.map(function (x, j) { return '<button type="button" class="v-step" data-i="' + j + '"><span class="st-n">0' + (j + 1) + '</span><span class="st-l">' + x.label + '<span style="color: var(--ac2)">.</span></span><span class="st-s">' + esc(x.sub) + '</span></button>'; }).join('');
+stageEl.innerHTML = S.map(function (x, j) { return '<div class="v-panel" style="grid-area: 1 / 1; max-width: 680px"><p style="margin: 0 0 18px; font-weight: 400; font-size: 18px; color: var(--ac-t)">' + esc(x.title) + '</p><p style="margin: 0 0 24px; font-weight: 400; font-size: clamp(22px, 2.5vw, 35px); line-height: 1.16">“' + esc(x.q) + '”</p><p style="margin: 0 0 28px; max-width: 560px; color: #3b3934">' + esc(x.text) + '</p><ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 32px; font-size: 19px">' + x.items.map(function (it) { return '<li style="padding: 12px 0; border-top: 1px solid #151513">' + esc(it) + '</li>'; }).join('') + '</ul><button type="button" class="svc-nextbtn" data-i="' + ((j + 1) % 3) + '">' + (j < 2 ? 'next: ' + S[j + 1].label + ' ↓' : 'back to frame ↑') + '</button></div>'; }).join('');
+var stepBtns = stepsEl.querySelectorAll('.v-step'), panels = stageEl.querySelectorAll('.v-panel'), nodes = document.querySelectorAll('.svc-line .node');
+function go(n) {
+  step = n;
+  for (var j = 0; j < 3; j++) {
+    stepBtns[j].classList.toggle('on', j === n); stepBtns[j].setAttribute('aria-pressed', j === n ? 'true' : 'false');
+    panels[j].classList.toggle('on', j === n);
+    nodes[j].classList.toggle('hit', j <= n);
+  }
+  document.getElementById('svc-fill').style.height = (n * 190) + 'px';
+  document.getElementById('svc-mark').style.transform = 'translateY(' + (n * 190) + 'px)';
+  document.getElementById('svc-morph').className = 'v-morph s' + n;
+}
+document.getElementById('services').addEventListener('click', function (e) {
+  var b = e.target.closest('[data-i]'); if (b) { go(+b.getAttribute('data-i')); return; }
+  if (e.target.closest('#svc-prev')) { go((step + 2) % 3); } else if (e.target.closest('#svc-next')) { go((step + 1) % 3); }
+});
+go(0);
+var CH = [['all', 'all'], ['product', 'products & platforms'], ['experience', 'experiences'], ['ai', 'AI']];
+var filter = 'all', openName = '';
+var chipsEl = document.getElementById('chips'), refsEl = document.getElementById('refs');
+function draw() {
+  chipsEl.innerHTML = CH.map(function (c) { return '<button type="button" class="chip' + (c[0] === filter ? ' on' : '') + '" aria-pressed="' + (c[0] === filter) + '" data-f="' + c[0] + '">' + esc(c[1]) + '</button>'; }).join('');
+  refsEl.innerHTML = all.filter(function (r) { return filter === 'all' || r.tags.indexOf(filter) !== -1; }).map(function (r) {
+    var o = r.name === openName, nm = esc(r.name);
+    var head = '<button type="button" class="af-tile" aria-expanded="' + o + '" data-n="' + nm + '" style="aspect-ratio: ' + r.ar + '; background: ' + r.c.tone + '; color: ' + r.c.ink + '">';
+    if (!o) { return head + '<span class="t-top"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm">+</span></span><span class="t-name">' + nm + '</span></button>'; }
+    return head + '<span style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #151513"></span><span class="t-top" style="color: #bdb8ad"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm" style="color: #ebe7df">–</span></span><span style="position: relative; display: block; color: #ebe7df"><span style="display: block; margin-bottom: 16px; font-weight: 400; font-size: 22px; line-height: 1.2">' + esc(r.what) + '</span><span class="t-row">role — ' + esc(r.role) + '</span><span class="t-row" style="padding-bottom: 0">scope — ' + esc(r.scope) + '</span></span><span class="t-name" style="font-size: 28px; color: #ebe7df">' + nm + '<span style="color: var(--ac-d)">.</span></span></button>';
+  }).join('');
+}
+document.getElementById('work').addEventListener('click', function (e) {
+  var c = e.target.closest('[data-f]'); if (c) { filter = c.getAttribute('data-f'); draw(); return; }
+  var t = e.target.closest('[data-n]'); if (t) { var n = t.getAttribute('data-n').replace(/&amp;/g, '&'); openName = openName === n ? '' : n; draw(); var el = refsEl.querySelector('[aria-expanded="true"]'); if (el) { el.focus(); } }
+});
+draw();
+document.getElementById('mail').addEventListener('click', function (e) { e.preventDefault(); var a = ['contact', 'mohadvisory.com']; window.location.href = 'mai' + 'lto:' + a.join(String.fromCharCode(64)); });
+
+</script>
+</body>
+</html>
