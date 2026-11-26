@@ -54,6 +54,12 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 .st-l{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(28px,6vw,92px);line-height:.9;letter-spacing:-.05em}
 .st-s{display:block;margin-top:12px;font-weight:400;font-size:17px}
 .svc-nextbtn{display:inline-flex;align-items:center;min-height:48px;margin-top:32px;padding:0 22px;border:0;background:#151513;color:#ebe7df;font-family:Jost,sans-serif;font-weight:400;font-size:17px;cursor:pointer}
+.fl{display:grid;gap:6px;font-weight:400;font-size:17px}
+.fl input,.fl textarea{box-sizing:border-box;width:100%;padding:12px 14px;border:1px solid var(--ac-ink);border-radius:0;background:transparent;color:var(--ac-ink);font:400 18px Jost,sans-serif}
+.fl input:focus-visible,.fl textarea:focus-visible{outline:3px solid var(--ac-d);outline-offset:2px}
+.fl textarea{resize:vertical}
+.fbtn{min-height:52px;padding:0 28px;border:0;background:var(--ac-ink);color:#151513;font:500 19px Jost,sans-serif;cursor:pointer}
+.fbtn[disabled]{opacity:.6;cursor:default}
 .chip{min-height:44px;padding:0 18px;border:1px solid #151513;background:transparent;color:#151513;font-family:Jost,sans-serif;font-size:17px;cursor:pointer}
 .chip:hover,.chip.on{background:#151513;color:#ebe7df}
 .af-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;width:100%;margin:0 0 20px;padding:24px;box-sizing:border-box;break-inside:avoid;border:0;font-family:Jost,sans-serif;font-weight:300;font-size:18px;line-height:1.4;text-align:left;cursor:pointer}
@@ -170,6 +176,13 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 <div id="refs" style="columns: 340px; column-gap: 20px"></div>
 </section>
 
+<section aria-label="Awards" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 40px; padding: 32px 5%; border-top: 1px solid #151513; background: #f6f3ec">
+<p style="margin: 0; font-weight: 400; font-size: 20px; color: #3b3934">awards</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 28px; font-family: Archivo, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em">
+<li>3× LE BOOK, Non-Traditional Experience</li><li aria-hidden="true" style="color: var(--ac2)">●</li><li>2× TOP/COM Gold</li><li aria-hidden="true" style="color: var(--ac2)">●</li><li>Grand Prix Stratégies Luxe, Gold</li><li aria-hidden="true" style="color: var(--ac2)">●</li><li>FWA of the Day</li>
+</ul>
+</section>
+
 <section id="contact" style="position: relative; overflow: hidden; background: var(--ac-bg); color: var(--ac-ink); padding: 112px 5% 48px">
 <div class="ct-circle" style="position: absolute; right: 6%; top: 64px; width: 240px; height: 240px; border-radius: 50%; background: var(--ac-deco); color: #151513; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px">
 <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 8px">
@@ -178,8 +191,18 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 </div>
 </div>
 <h2 style="position: relative; margin: 0 0 40px; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(60px, 11vw, 160px); line-height: 0.84; letter-spacing: -0.05em">let's build it.</h2>
-<a href="#contact" id="mail" style="position: relative; display: inline-block; padding: 8px 0; font-weight: 500; font-size: clamp(22px, 3.4vw, 28px); color: var(--ac-ink)">write to us →</a>
-<noscript><p style="position: relative; margin: 12px 0 0">contact [at] mohadvisory [dot] com</p></noscript>
+<form id="cform" hidden novalidate style="position: relative; max-width: 620px; display: grid; gap: 18px">
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position: absolute; left: -9999px" aria-hidden="true">
+<label class="fl">your name<input type="text" name="name" required autocomplete="name"></label>
+<label class="fl">your email<input type="email" name="email" required autocomplete="email"></label>
+<label class="fl">what do you want to build?<textarea name="message" rows="4" required></textarea></label>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<button type="submit" class="fbtn">send →</button>
+<p id="cmsg" role="status" style="margin: 0; font-weight: 400"></p>
+</div>
+</form>
+<div id="cfallback"><a href="#contact" id="mail" style="position: relative; display: inline-block; padding: 8px 0; font-weight: 500; font-size: clamp(22px, 3.4vw, 28px); color: var(--ac-ink)">write to us →</a>
+<noscript><p style="position: relative; margin: 12px 0 0">contact [at] mohadvisory [dot] com</p></noscript></div>
 <div style="position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--ac-ink); font-weight: 400; font-size: 17px">
 <span>MOH Advisory LLC · Wyoming, USA</span><span>Europe · the Gulf · Asia</span><a href="https://www.linkedin.com/in/mohamadounimaga/" target="_blank" rel="noopener" style="color: var(--ac-ink); padding: 10px 0">LinkedIn</a>
 </div>
@@ -205,9 +228,9 @@ var all = [
 { name: 'Arkema', ar: '4 / 3', kind: 'experience · industry', what: 'Interactive showroom and web experience for the group headquarters.', role: 'Project Director', scope: 'UX strategy, content architecture, 3D and web, on-site deployment', tags: ['experience', 'product'], c: W },
 { name: 'Cheval Blanc', ar: '1 / 1', kind: 'platform · hospitality', what: 'Conversion strategy and digital brand experience for the LVMH hotel collection.', role: 'Executive Project Director', scope: 'conversion strategy, UX and UI evolutions, maintenance', tags: ['product'], c: R },
 { name: 'Nike', ar: '3 / 4', kind: 'activation · sportswear', what: 'Interactive installation for Air Max Day, delivered in two weeks.', role: 'Project Director', scope: 'brief framing, UX, real-time 3D and web app, deployment', tags: ['experience'], c: D },
-{ name: 'Printemps', ar: '1 / 1', kind: 'retail experience · department store', what: 'Interactive and immersive customer experience for the department store.', role: 'Manager, CX/UX and projects', scope: 'strategic consulting, experience design, programme delivery', tags: ['experience'], c: W },
-{ name: 'KPMG', ar: '4 / 3', kind: 'experience · professional services', what: 'Interactive, AI-driven experience environment for the firm.', role: 'Manager, CX/UX and projects', scope: 'strategic consulting, experience design, programme delivery', tags: ['experience', 'ai'], c: G },
-{ name: 'Sansui Niseko', ar: '4 / 5', kind: 'platform · hospitality · Japan', what: 'Digital ecosystem and booking module for a new hotel, in Japanese, English and Chinese.', role: 'Senior Consultant, marketing and digital strategy', scope: 'conception, design, production, on-site SEO, content', tags: ['product'], c: R }
+{ name: 'adidas', ar: '1 / 1', kind: 'activation · sportswear', what: 'Real-time interactive 3D experience taking visitors into the Grid for the European launch of Deerupt, in Paris, London, Manchester and Amsterdam.', role: 'Project Director', scope: 'production direction, four-city deployment', tags: ['experience'], c: W },
+{ name: 'Martell', ar: '4 / 3', kind: 'platform · spirits', what: 'UX, SEO and conversion optimisation across the French and international sites.', role: 'Executive Project Director', scope: 'UX, SEO, CRO, multi-market rollout', tags: ['product'], c: G },
+{ name: 'Sansui Niseko', ar: '4 / 5', kind: 'platform · hospitality · Japan', what: 'Full redesign of the hotel\'s digital ecosystem, in Japanese, English and Chinese, with booking system integration.', role: 'Strategic Project Director', scope: 'UX, content strategy, booking integration, on-site SEO', tags: ['product'], c: R }
 ];
 var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
 var step = 0;
@@ -248,6 +271,23 @@ document.getElementById('work').addEventListener('click', function (e) {
   var t = e.target.closest('[data-n]'); if (t) { var n = t.getAttribute('data-n').replace(/&amp;/g, '&'); openName = openName === n ? '' : n; draw(); var el = refsEl.querySelector('[aria-expanded="true"]'); if (el) { el.focus(); } }
 });
 draw();
+var FORM_KEY = '';
+(function () {
+  var f = document.getElementById('cform'), msg = document.getElementById('cmsg');
+  if (!FORM_KEY) { return; }
+  f.hidden = false; document.getElementById('cfallback').hidden = true;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (f.botcheck.checked) { return; }
+    if (!f.name.value.trim() || !/^\S+@\S+\.\S+$/.test(f.email.value) || !f.message.value.trim()) { msg.textContent = 'Please fill in your name, a valid email and a message.'; return; }
+    var btn = f.querySelector('button'); btn.disabled = true; msg.textContent = 'Sending…';
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: FORM_KEY, subject: 'New enquiry from mohadvisory.com', from_name: 'mohadvisory.com', name: f.name.value, email: f.email.value, message: f.message.value }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (d.success) { f.reset(); msg.textContent = 'Thank you. We reply within two working days.'; } else { msg.textContent = 'Something went wrong. Please try again.'; } })
+      .catch(function () { msg.textContent = 'Something went wrong. Please try again.'; })
+      .then(function () { btn.disabled = false; });
+  });
+})();
 document.getElementById('mail').addEventListener('click', function (e) { e.preventDefault(); var a = ['contact', 'mohadvisory.com']; window.location.href = 'mai' + 'lto:' + a.join(String.fromCharCode(64)); });
 
 </script>
