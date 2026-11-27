@@ -67,23 +67,23 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 .rv-on [data-rv="rise"]{opacity:0;transform:translateY(28px);filter:blur(10px)}
 .rv-on [data-rv="title"]{opacity:0;transform:translateY(.45em);clip-path:inset(0 0 100% 0)}
 .rv-on [data-rv="wipe"]{clip-path:inset(100% 0 0 0);transform:translateY(24px)}
-.rv-on [data-rv="pop"]{opacity:0;transform:scale(.55)}
+.rv-on [data-rv="grow"]{transform:scale(0)}
 .rv-on [data-rv="tile"]{opacity:0;transform:translateY(44px) scale(.97)}
 .rv-on [data-rv].in{opacity:1;transform:none;filter:none;clip-path:inset(-20% -20% -20% -20%)}
-.rv-on [data-rv="pop"].in{transition-timing-function:cubic-bezier(.3,1.5,.5,1)}
+.rv-on [data-rv="grow"].in{transition-timing-function:cubic-bezier(.3,1.25,.5,1)}
 .t-ov{position:absolute;left:0;right:0;top:0;bottom:0;background:#151513}
 .t-out{clip-path:circle(0 at calc(100% - 34px) 34px);pointer-events:none}
 @media (prefers-reduced-motion:no-preference){
-.af-tile.opening .t-ov{animation:tOv .85s cubic-bezier(.3,.6,.2,1) both}
-.af-tile.opening .t-top{animation:tFade .5s .2s both}
+.af-tile.opening .t-ov{animation:tOv 1.25s cubic-bezier(.3,.6,.2,1) both}
+.af-tile.opening .t-top{animation:tFade .5s .35s both}
 .af-tile.opening .t-pm{animation:tSpin .7s cubic-bezier(.2,.7,.2,1) both}
 .af-tile.opening .t-body>*{animation:tRise .75s cubic-bezier(.2,.7,.2,1) both}
-.af-tile.opening .t-body>:nth-child(1){animation-delay:.3s}
-.af-tile.opening .t-body>:nth-child(2){animation-delay:.42s}
-.af-tile.opening .t-body>:nth-child(3){animation-delay:.52s}
-.af-tile.opening .t-body>:nth-child(4){animation-delay:.62s}
-.af-tile.opening>.t-name{animation:tRise .75s .7s cubic-bezier(.2,.7,.2,1) both}
-.af-tile.closing .t-out{animation:tOvOut .6s cubic-bezier(.4,0,.2,1) both}
+.af-tile.opening .t-body>:nth-child(1){animation-delay:.5s}
+.af-tile.opening .t-body>:nth-child(2){animation-delay:.64s}
+.af-tile.opening .t-body>:nth-child(3){animation-delay:.76s}
+.af-tile.opening .t-body>:nth-child(4){animation-delay:.88s}
+.af-tile.opening>.t-name{animation:tRise .75s 1s cubic-bezier(.2,.7,.2,1) both}
+.af-tile.closing .t-out{animation:tOvOut .8s cubic-bezier(.4,0,.2,1) both}
 .af-tile.closing>.t-name{animation:tRise .6s .15s cubic-bezier(.2,.7,.2,1) both}
 .af-tile.closing .t-pm{animation:tSpin .6s cubic-bezier(.2,.7,.2,1) both}
 }
@@ -93,6 +93,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 @keyframes tFade{from{opacity:0}to{opacity:1}}
 @keyframes tSpin{from{transform:rotate(-90deg)}to{transform:none}}
 .t-pm{display:inline-block}
+.rcol{flex:1 1 0;min-width:0}
+#top>div:nth-child(3){background:#ebe7df}
 .chip{min-height:44px;padding:0 18px;border:1px solid #151513;background:transparent;color:#151513;font-family:Jost,sans-serif;font-size:17px;cursor:pointer}
 .chip:hover,.chip.on{background:#151513;color:#ebe7df}
 .af-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;width:100%;margin:0 0 20px;padding:24px;box-sizing:border-box;break-inside:avoid;border:0;font-family:Jost,sans-serif;font-weight:300;font-size:18px;line-height:1.4;text-align:left;cursor:pointer}
@@ -206,7 +208,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 <h2 style="margin: 0; max-width: 760px; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 5.6vw, 80px); line-height: 0.88; letter-spacing: -0.045em">luxury, retail, sportswear, industry<span style="color: var(--ac2)">.</span></h2>
 <div id="chips" style="display: flex; flex-wrap: wrap; gap: 8px"></div>
 </div>
-<div id="refs" style="columns: 340px; column-gap: 20px"></div>
+<div id="refs" style="display: flex; align-items: flex-start; gap: 20px"></div>
 </section>
 
 <section aria-label="Awards" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 40px; padding: 32px 5%; border-top: 1px solid #151513; background: #f6f3ec">
@@ -298,20 +300,34 @@ go(0);
 var CH = [['all', 'all'], ['product', 'products & platforms'], ['experience', 'experiences'], ['ai', 'AI']];
 var filter = 'all', openName = '', tilesShown = false, justOpened = '', justClosed = '';
 var chipsEl = document.getElementById('chips'), refsEl = document.getElementById('refs');
+var lastCols = 0;
+function colCount() { var w = refsEl.clientWidth; return w >= 1000 ? 3 : w >= 620 ? 2 : 1; }
 function draw() {
   chipsEl.innerHTML = CH.map(function (c) { return '<button type="button" class="chip' + (c[0] === filter ? ' on' : '') + '" aria-pressed="' + (c[0] === filter) + '" data-f="' + c[0] + '">' + esc(c[1]) + '</button>'; }).join('');
-  refsEl.innerHTML = all.filter(function (r) { return filter === 'all' || r.tags.indexOf(filter) !== -1; }).map(function (r) {
+  var list = all.filter(function (r) { return filter === 'all' || r.tags.indexOf(filter) !== -1; });
+  var n = colCount(), cols = [], hs = [], k; lastCols = n;
+  for (k = 0; k < n; k++) { cols.push([]); hs.push(0); }
+  // each card goes to the shortest column, judged on closed heights, so opening a card never reshuffles the grid
+  list.forEach(function (r) { var a = r.ar.split('/'), j = hs.indexOf(Math.min.apply(null, hs)); cols[j].push(r); hs[j] += parseFloat(a[1]) / parseFloat(a[0]) + 0.07; });
+  var tile = function (r, ci) {
     var o = r.name === openName, nm = esc(r.name);
-    var head = '<button type="button" class="af-tile' + (tilesShown ? ' in' : '') + (r.name === justOpened ? ' opening' : r.name === justClosed ? ' closing' : '') + '" data-rv="tile" aria-expanded="' + o + '" data-n="' + nm + '" style="' + (o ? 'min-height: 340px; gap: 28px' : 'aspect-ratio: ' + r.ar) + '; background: ' + r.c.tone + '; color: ' + r.c.ink + '">';
+    var head = '<button type="button" class="af-tile' + (tilesShown ? ' in' : '') + (r.name === justOpened ? ' opening' : r.name === justClosed ? ' closing' : '') + '" data-rv="tile" aria-expanded="' + o + '" data-n="' + nm + '" style="--d: ' + (ci * 0.12) + 's; ' + (o ? 'min-height: 340px; gap: 28px' : 'aspect-ratio: ' + r.ar) + '; background: ' + r.c.tone + '; color: ' + r.c.ink + '">';
     if (!o) { return head + '<span class="t-top"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm">+</span></span><span class="t-name">' + nm + '</span>' + (r.name === justClosed ? '<span class="t-ov t-out"></span>' : '') + '</button>'; }
     return head + '<span class="t-ov"></span><span class="t-top" style="color: #bdb8ad"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm" style="color: #ebe7df">–</span></span><span class="t-body" style="position: relative; display: block; color: #ebe7df"><span style="display: block; margin-bottom: 16px; font-weight: 400; font-size: 22px; line-height: 1.2">' + esc(r.what) + '</span><span class="t-row">role — ' + esc(r.role) + '</span><span class="t-row">scope — ' + esc(r.scope) + '</span>' + (r.res ? '<span class="t-row">result — ' + esc(r.res) + '</span>' : '') + '</span><span class="t-name" style="font-size: 28px; color: #ebe7df">' + nm + '<span style="color: var(--ac-d)">.</span></span></button>';
-  }).join('');
+  };
+  refsEl.innerHTML = cols.map(function (c, ci) { return '<div class="rcol">' + c.map(function (r) { return tile(r, ci); }).join('') + '</div>'; }).join('');
 }
 document.getElementById('work').addEventListener('click', function (e) {
   var c = e.target.closest('[data-f]'); if (c) { filter = c.getAttribute('data-f'); draw(); return; }
-  var t = e.target.closest('[data-n]'); if (t) { var n = t.getAttribute('data-n').replace(/&amp;/g, '&'); justClosed = openName; openName = openName === n ? '' : n; justOpened = openName; draw(); justOpened = ''; justClosed = ''; var el = refsEl.querySelector('[aria-expanded="true"]'); if (el) { el.focus(); } }
+  var t = e.target.closest('[data-n]'); if (t) {
+    var n = t.getAttribute('data-n'), before = t.getBoundingClientRect().top;
+    justClosed = openName; openName = openName === n ? '' : n; justOpened = openName; draw(); justOpened = ''; justClosed = '';
+    var el = [].slice.call(refsEl.querySelectorAll('.af-tile')).filter(function (x) { return x.getAttribute('data-n') === n; })[0];
+    if (el) { var shift = el.getBoundingClientRect().top - before; if (Math.abs(shift) > 1) { window.scrollBy({ top: shift, left: 0, behavior: 'instant' }); } el.focus({ preventScroll: true }); }
+  }
 });
 draw();
+window.addEventListener('resize', function () { if (colCount() !== lastCols) { draw(); } });
 var FORM_KEY = '3cbafdc3-8b6e-4e1c-a634-a9fa65f767b3';
 (function () {
   var f = document.getElementById('cform'), msg = document.getElementById('cmsg');
@@ -341,10 +357,12 @@ var FORM_KEY = '3cbafdc3-8b6e-4e1c-a634-a9fa65f767b3';
   }
   function parents(sel) { return [].slice.call(document.querySelectorAll(sel)).map(function (e) { return e.parentElement; }); }
   function markEls(els, type, step) { els.forEach(function (el, i) { el.setAttribute('data-rv', type); el.style.setProperty('--d', (Math.min(i, 6) * step * 1.35) + 's'); }); }
-  mark('.hero-disc', 'pop', 0, 0.25);
-  mark('#top h1', 'title', 0, 0.15);
-  mark('#top > div:nth-child(2) > *', 'rise', 0.09, 0.1);
-  mark('#top > div:nth-child(3) > *', 'rise', 0.12, 0.45);
+  // hero sequence: disc, logo, title, then the left column, then the right one
+  mark('.hero-disc', 'grow', 0, 0);
+  mark('#top > div:nth-child(2) > a:first-child', 'rise', 0, 0.55);
+  mark('#top h1', 'title', 0, 0.85);
+  mark('#top > div:nth-child(2) > *', 'rise', 0.2, 1.45);
+  mark('#top > div:nth-child(3) > *', 'rise', 0.22, 2.0);
   mark('section[aria-label="Clients"]', 'rise');
   mark('#for > p', 'rise');
   markEls(parents('#for h2'), 'rise', 0.12);
@@ -356,10 +374,9 @@ var FORM_KEY = '3cbafdc3-8b6e-4e1c-a634-a9fa65f767b3';
   mark('#chips', 'rise', 0, 0.15);
   mark('section[aria-label="Awards"] > p', 'rise');
   mark('.aw li', 'rise', 0.07, 0.1);
-  mark('.ct-circle', 'pop');
+  mark('.ct-circle', 'grow');
   mark('#cform, #cfallback', 'rise', 0, 0.15);
   mark('#contact > div:last-child', 'rise', 0, 0.2);
-  [].slice.call(refsEl.querySelectorAll('.af-tile')).forEach(function (t, i) { t.style.setProperty('--d', ((i % 4) * 0.12) + 's'); });
   document.documentElement.classList.add('rv-on');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
