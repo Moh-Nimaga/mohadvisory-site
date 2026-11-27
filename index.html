@@ -61,6 +61,16 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--ac2);outline-offset
 .fbtn{min-height:52px;padding:0 28px;border:0;background:var(--ac-ink);color:#151513;font:500 19px Jost,sans-serif;cursor:pointer}
 .fbtn[disabled]{opacity:.6;cursor:default}
 .aw li::before{content:"●";color:var(--ac2);margin-right:10px;font-size:.7em;vertical-align:.15em}
+
+/* scroll reveals: only active when the script adds .rv-on (never with reduced motion or without JS) */
+.rv-on [data-rv]{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s cubic-bezier(.2,.7,.2,1),clip-path 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s);will-change:opacity,transform}
+.rv-on [data-rv="rise"]{opacity:0;transform:translateY(28px);filter:blur(10px)}
+.rv-on [data-rv="title"]{opacity:0;transform:translateY(.45em);clip-path:inset(0 0 100% 0)}
+.rv-on [data-rv="wipe"]{clip-path:inset(100% 0 0 0);transform:translateY(24px)}
+.rv-on [data-rv="pop"]{opacity:0;transform:scale(.55)}
+.rv-on [data-rv="tile"]{opacity:0;transform:translateY(44px) scale(.97)}
+.rv-on [data-rv].in{opacity:1;transform:none;filter:none;clip-path:inset(-20% -20% -20% -20%)}
+.rv-on [data-rv="pop"].in{transition-timing-function:cubic-bezier(.3,1.5,.5,1)}
 .chip{min-height:44px;padding:0 18px;border:1px solid #151513;background:transparent;color:#151513;font-family:Jost,sans-serif;font-size:17px;cursor:pointer}
 .chip:hover,.chip.on{background:#151513;color:#ebe7df}
 .af-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;width:100%;margin:0 0 20px;padding:24px;box-sizing:border-box;break-inside:avoid;border:0;font-family:Jost,sans-serif;font-weight:300;font-size:18px;line-height:1.4;text-align:left;cursor:pointer}
@@ -264,13 +274,13 @@ document.getElementById('services').addEventListener('click', function (e) {
 });
 go(0);
 var CH = [['all', 'all'], ['product', 'products & platforms'], ['experience', 'experiences'], ['ai', 'AI']];
-var filter = 'all', openName = '';
+var filter = 'all', openName = '', tilesShown = false;
 var chipsEl = document.getElementById('chips'), refsEl = document.getElementById('refs');
 function draw() {
   chipsEl.innerHTML = CH.map(function (c) { return '<button type="button" class="chip' + (c[0] === filter ? ' on' : '') + '" aria-pressed="' + (c[0] === filter) + '" data-f="' + c[0] + '">' + esc(c[1]) + '</button>'; }).join('');
   refsEl.innerHTML = all.filter(function (r) { return filter === 'all' || r.tags.indexOf(filter) !== -1; }).map(function (r) {
     var o = r.name === openName, nm = esc(r.name);
-    var head = '<button type="button" class="af-tile" aria-expanded="' + o + '" data-n="' + nm + '" style="' + (o ? 'min-height: 340px; gap: 28px' : 'aspect-ratio: ' + r.ar) + '; background: ' + r.c.tone + '; color: ' + r.c.ink + '">';
+    var head = '<button type="button" class="af-tile' + (tilesShown ? ' in' : '') + '" data-rv="tile" aria-expanded="' + o + '" data-n="' + nm + '" style="' + (o ? 'min-height: 340px; gap: 28px' : 'aspect-ratio: ' + r.ar) + '; background: ' + r.c.tone + '; color: ' + r.c.ink + '">';
     if (!o) { return head + '<span class="t-top"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm">+</span></span><span class="t-name">' + nm + '</span></button>'; }
     return head + '<span style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #151513"></span><span class="t-top" style="color: #bdb8ad"><span>' + esc(r.kind) + '</span><span aria-hidden="true" class="t-pm" style="color: #ebe7df">–</span></span><span style="position: relative; display: block; color: #ebe7df"><span style="display: block; margin-bottom: 16px; font-weight: 400; font-size: 22px; line-height: 1.2">' + esc(r.what) + '</span><span class="t-row">role — ' + esc(r.role) + '</span><span class="t-row">scope — ' + esc(r.scope) + '</span>' + (r.res ? '<span class="t-row">result — ' + esc(r.res) + '</span>' : '') + '</span><span class="t-name" style="font-size: 28px; color: #ebe7df">' + nm + '<span style="color: var(--ac-d)">.</span></span></button>';
   }).join('');
@@ -295,6 +305,53 @@ var FORM_KEY = '3cbafdc3-8b6e-4e1c-a634-a9fa65f767b3';
       .then(function (d) { if (d.success) { f.reset(); msg.textContent = 'Thank you. We reply within two working days.'; } else { msg.textContent = 'Something went wrong. Please try again.'; } })
       .catch(function () { msg.textContent = 'Something went wrong. Please try again.'; })
       .then(function () { btn.disabled = false; });
+  });
+})();
+
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!('IntersectionObserver' in window) || (mq && mq.matches)) { tilesShown = true; return; }
+  var groups = [];
+  function mark(sel, type, step, base) {
+    var els = [].slice.call(document.querySelectorAll(sel));
+    els.forEach(function (el, i) { if (el.hasAttribute('data-rv')) { return; } el.setAttribute('data-rv', type); el.style.setProperty('--d', ((base || 0) + Math.min(i, 6) * (step || 0)) + 's'); });
+    return els;
+  }
+  function parents(sel) { return [].slice.call(document.querySelectorAll(sel)).map(function (e) { return e.parentElement; }); }
+  function markEls(els, type, step) { els.forEach(function (el, i) { el.setAttribute('data-rv', type); el.style.setProperty('--d', (Math.min(i, 6) * step) + 's'); }); }
+  mark('.hero-disc', 'pop', 0, 0.25);
+  mark('#top h1', 'title', 0, 0.15);
+  mark('#top > div:nth-child(2) > *', 'rise', 0.09, 0.1);
+  mark('#top > div:nth-child(3) > *', 'rise', 0.12, 0.45);
+  mark('section[aria-label="Clients"]', 'rise');
+  mark('#for > p', 'rise');
+  markEls(parents('#for h2'), 'rise', 0.12);
+  mark('#services h2, #work h2, #contact h2', 'title');
+  mark('#services > div:first-child > *', 'rise', 0.1);
+  mark('.svc-grid', 'rise', 0, 0.1);
+  var take = document.querySelector('main > section:not([id]):not([aria-label])');
+  if (take) { [].slice.call(take.querySelectorAll(':scope > p')).forEach(function (e) { e.setAttribute('data-rv', 'rise'); }); markEls([].slice.call(take.querySelectorAll('h3')).map(function (e) { return e.parentElement; }), 'wipe', 0.11); }
+  mark('#chips', 'rise', 0, 0.15);
+  mark('section[aria-label="Awards"] > p', 'rise');
+  mark('.aw li', 'rise', 0.07, 0.1);
+  mark('.ct-circle', 'pop');
+  mark('#cform, #cfallback', 'rise', 0, 0.15);
+  mark('#contact > div:last-child', 'rise', 0, 0.2);
+  [].slice.call(refsEl.querySelectorAll('.af-tile')).forEach(function (t, i) { t.style.setProperty('--d', ((i % 4) * 0.08) + 's'); });
+  document.documentElement.classList.add('rv-on');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  // clipped elements have no visible area of their own, so their parent is watched instead
+  var io2 = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { (en.target.rvKids || []).forEach(function (k) { k.classList.add('in'); }); io2.unobserve(en.target); } });
+  }, { threshold: 0.05, rootMargin: '0px 0px -10% 0px' });
+  requestAnimationFrame(function () {
+    [].slice.call(document.querySelectorAll('[data-rv]')).forEach(function (el) {
+      var t = el.getAttribute('data-rv');
+      if (t === 'title' || t === 'wipe') { var par = el.parentElement; (par.rvKids = par.rvKids || []).push(el); io2.observe(par); } else { io.observe(el); }
+    });
+    tilesShown = true;
   });
 })();
 document.getElementById('mail').addEventListener('click', function (e) { e.preventDefault(); var a = ['contact', 'mohadvisory.com']; window.location.href = 'mai' + 'lto:' + a.join(String.fromCharCode(64)); });
